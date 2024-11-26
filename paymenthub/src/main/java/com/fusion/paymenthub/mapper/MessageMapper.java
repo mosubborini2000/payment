@@ -1,0 +1,81 @@
+package com.fusion.paymenthub.mapper;
+import com.fusion.paymenthub.dto.*;
+import com.fusion.paymenthub.model.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
+@Mapper(componentModel = "spring")
+public interface MessageMapper {
+    @Mapping(source = "header", target = "header", qualifiedByName = "toHeaderEntity")
+    @Mapping(source = "amount", target = "amount")
+    @Mapping(source = "amountCurrency", target = "amountCurrency")
+    @Mapping(source = "instructedAmount", target = "instructedAmount")
+    @Mapping(source = "instructedAmountCurrency", target = "instructedAmountCurrency")
+    @Mapping(source = "exchangeRate", target = "exchangeRate")
+    @Mapping(source = "valueDate", target = "valueDate")
+    @Mapping(source = "debtorBank", target = "debtorBank")
+    @Mapping(source = "customerAccount", target = "customerAccount")
+    @Mapping(source = "orderingCustomerName", target = "orderingCustomerName")
+    @Mapping(source = "debtorAddress", target = "debtorAddress")
+    @Mapping(source = "beneficiaryBank", target = "beneficiaryBank")
+    @Mapping(source = "beneficiaryCustomerName", target = "beneficiaryCustomerName")
+    @Mapping(source = "beneficiaryCustomerAccount", target = "beneficiaryCustomerAccount")
+    @Mapping(source = "beneficiaryAddress", target = "beneficiaryAddress")
+    @Mapping(source = "documentNo", target = "documentNo")
+    @Mapping(source = "transactionType", target = "transactionType")
+    @Mapping(source = "chargeBearer", target = "chargeBearer")
+    @Mapping(source = "chargeAmount", target = "chargeAmount")
+    @Mapping(source = "chargeAmountCurrency", target = "chargeAmountCurrency")
+    @Mapping(source = "remittanceInformation", target = "remittanceInformation")
+    @Mapping(source = "documentDate", target = "documentDate")
+    @Mapping(source = "regulatoryReporting", target = "regulatoryReporting")
+    @Mapping(source = "instructionForNextAgent", target = "instructionForNextAgent")
+    @Mapping(source = "status", target = "status")
+    Message toEntity(MessageRequest requestDTO);
+
+    @Mapping(source = "header", target = "header", qualifiedByName = "toHeaderResponseDTO")
+    @Mapping(source = "id", target = "reference")
+    @Mapping(source = "amount", target = "amount")
+    @Mapping(source = "amountCurrency", target = "amountCurrency")
+    @Mapping(source = "instructedAmount", target = "instructedAmount")
+    @Mapping(source = "instructedAmountCurrency", target = "instructedAmountCurrency")
+    @Mapping(source = "exchangeRate", target = "exchangeRate")
+    @Mapping(source = "valueDate", target = "valueDate")
+    @Mapping(source = "debtorBank", target = "debtorBank")
+    @Mapping(source = "customerAccount", target = "customerAccount")
+    @Mapping(source = "orderingCustomerName", target = "orderingCustomerName")
+    @Mapping(source = "debtorAddress", target = "debtorAddress")
+    @Mapping(source = "beneficiaryBank", target = "beneficiaryBank")
+    @Mapping(source = "beneficiaryCustomerName", target = "beneficiaryCustomerName")
+    @Mapping(source = "beneficiaryCustomerAccount", target = "beneficiaryCustomerAccount")
+    @Mapping(source = "beneficiaryAddress", target = "beneficiaryAddress")
+    @Mapping(source = "documentNo", target = "documentNo")
+    @Mapping(source = "transactionType", target = "transactionType")
+    @Mapping(source = "chargeBearer", target = "chargeBearer")
+    @Mapping(source = "chargeAmount", target = "chargeAmount")
+    @Mapping(source = "chargeAmountCurrency", target = "chargeAmountCurrency")
+    @Mapping(source = "remittanceInformation", target = "remittanceInformation")
+    @Mapping(source = "documentDate", target = "documentDate")
+    @Mapping(source = "regulatoryReporting", target = "regulatoryReporting")
+    @Mapping(source = "instructionForNextAgent", target = "instructionForNextAgent")
+    @Mapping(source = "status", target = "status")
+    MessageResponse toResponseDTO(Message message);
+    @Named("toHeaderEntity")
+    @Mapping(source = "messageId", target = "messageId")
+    @Mapping(source = "timestamp", target = "timestamp")
+    @Mapping(source = "source", target = "source", qualifiedByName = "toSourceEntity")
+    Header toHeaderEntity(HeaderRequest headerRequest);
+    @Named("toSourceEntity")
+    @Mapping(source = "sourceSystem", target = "sourceSystem")
+    @Mapping(source = "sourceBank", target = "sourceBank")
+    Source toSourceEntity(SourceRequest sourceRequest);
+    @Named("toHeaderResponseDTO")
+    @Mapping(source = "messageId", target = "messageId")
+    @Mapping(source = "timestamp", target = "timestamp")
+    @Mapping(source = "source", target = "source", qualifiedByName = "toSourceResponseDTO")
+    HeaderResponse toHeaderResponseDTO(Header header);
+    @Named("toSourceResponseDTO")
+    @Mapping(source = "sourceSystem", target = "sourceSystem")
+    @Mapping(source = "sourceBank", target = "sourceBank")
+    SourceResponse toSourceResponseDTO(Source source);
+}
